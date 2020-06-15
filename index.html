@@ -70,6 +70,7 @@
 <div class="overlay setup hidden">
   <form class="setup-wizard-form"
         method="post"
+        action="https://javascript.pages.academy/code-and-magick"
         enctype="multipart/form-data"
         autocomplete="off">
 
@@ -80,9 +81,13 @@
           <input type="file" name="avatar">
         </div>
         <label>
-          <input type="text" name="username"
-                 maxlength="25" required
-                 class="setup-user-name" value="Синий Пендальф"/>
+          <input type="text"
+                 class="setup-user-name"
+                 value="Синий Пендальф"
+                 name="username"
+                 minlength="2"
+                 maxlength="25"
+                 required/>
         </label>
       </div>
 
