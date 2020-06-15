@@ -62,7 +62,6 @@ var MAX_NAME_LENGTH = 25;
 
 // Открывает и закрывает окно настройки персонажа
 var onPopupEscPress = function (evt) {
-  evt.preventDefault();
   if (evt.key === 'Escape' && userNameInput !== document.activeElement) {
     closePopup();
   }
@@ -125,7 +124,6 @@ userNameInput.addEventListener('invalid', function () {
 
 userNameInput.addEventListener('input', function () {
   var valueLength = userNameInput.value.length;
-
   if (valueLength < MIN_NAME_LENGTH) {
     userNameInput.setCustomValidity('Ещё ' + (MIN_NAME_LENGTH - valueLength) + ' симв.');
   } else if (valueLength > MAX_NAME_LENGTH) {
@@ -133,4 +131,30 @@ userNameInput.addEventListener('input', function () {
   } else {
     userNameInput.setCustomValidity('');
   }
+});
+
+// Изменяет цвета мантии, глаз и файерболов персонажа
+var wizardCoatColor = document.querySelector('.wizard-coat');
+var wizardEyesColor = document.querySelector('.wizard-eyes');
+var wizardFireball = document.querySelector('.setup-fireball-wrap');
+var FIREBALL_COLOR = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var coatColorInput = document.querySelector('input[name="coat-color"]');
+var eyesColorInput = document.querySelector('input[name="eyes-color"]');
+var fireballColorInput = document.querySelector('input[name="fireball-color"]');
+
+var setWizardColor = function (element, colorArray, input) {
+  element.addEventListener('click', function () {
+    var colorRandom = colorArray[getRandomNumber(colorArray.length)];
+    element.style.fill = colorRandom;
+    input.value = colorRandom;
+  });
+};
+
+setWizardColor(wizardCoatColor, COAT_COLOR, coatColorInput);
+setWizardColor(wizardEyesColor, EYES__COLOR, eyesColorInput);
+
+wizardFireball.addEventListener('click', function () {
+  var colorRandom = FIREBALL_COLOR[getRandomNumber(FIREBALL_COLOR.length)];
+  wizardFireball.style.backgroundColor = colorRandom;
+  fireballColorInput.value = colorRandom;
 });
