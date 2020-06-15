@@ -13,15 +13,15 @@ var wizardTemplate = document.querySelector('#similar-wizard-template')
   .querySelector('.setup-similar-item');
 
 
-var getRandomNumber = function (number) {
-  return Math.round(Math.random() * number);
+var getRandomNumber = function (maxNumber) {
+  return Math.round(Math.random() * maxNumber);
 };
 
 var generateWizard = function () {
   var wizard = {
-    name: WIZARD_NAMES[getRandomNumber(7)] + ' ' + WIZARD_SURNAMES[getRandomNumber(7)],
-    coatColor: COAT_COLOR[getRandomNumber(5)],
-    eyesColor: EYES__COLOR[getRandomNumber(4)],
+    name: WIZARD_NAMES[getRandomNumber(WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAMES[getRandomNumber(WIZARD_SURNAMES.length)],
+    coatColor: COAT_COLOR[getRandomNumber(COAT_COLOR.length)],
+    eyesColor: EYES__COLOR[getRandomNumber(EYES__COLOR.length)],
   };
   return wizard;
 };
