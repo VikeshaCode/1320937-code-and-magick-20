@@ -9,7 +9,7 @@
 
     var startCoords = {
       x: evt.clientX,
-      y: evt.clientY
+      y: evt.clientY,
     };
 
     var dragged = false;
@@ -21,12 +21,12 @@
 
       var shift = {
         x: startCoords.x - moveEvt.clientX,
-        y: startCoords.y - moveEvt.clientY
+        y: startCoords.y - moveEvt.clientY,
       };
 
       startCoords = {
         x: moveEvt.clientX,
-        y: moveEvt.clientY
+        y: moveEvt.clientY,
       };
 
       setupDialogElement.style.top = (setupDialogElement.offsetTop - shift.y) + 'px';
@@ -43,7 +43,7 @@
       if (dragged) {
         var onClickPreventDefault = function (clickEvt) {
           clickEvt.preventDefault();
-          dialogHandle.removeEventListener('click', onClickPreventDefault)
+          dialogHandle.removeEventListener('click', onClickPreventDefault);
         };
         dialogHandle.addEventListener('click', onClickPreventDefault);
       }
@@ -52,6 +52,5 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
-
 })();
 
