@@ -38,4 +38,3 @@
     window.util.isEnterEvent(evt, closePopup);
   });
 })();
-
